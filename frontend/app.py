@@ -10,4 +10,5 @@ def hello():
     stop_points = get_stop_points(postcode)
     
     
-    return render_template("index.html", stop_points=stop_points)
+    return render_template("index.html", stop_points=stop_points, postcode=postcode)
+

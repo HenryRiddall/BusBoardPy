@@ -66,6 +66,9 @@ def update_arrivals(stop_point):
     
     arrivals = [format_arrival(arrival) for arrival in response_data]
     
+    
+    arrivals = sorted(arrivals, key=lambda arrival: arrival['time_to_station'])
+    
     stop_point["arrivals"] = arrivals
     
     return stop_point
@@ -76,4 +79,5 @@ def format_arrival(arrival):
         "destination": arrival["destinationName"],
         "time_to_station": divmod(arrival["timeToStation"], 60)
     }
+    
     return formatted_arrival
