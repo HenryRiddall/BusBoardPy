@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 class="my-3">{% block title %} Welcome to BusBoard {% endblock %}</h1>
+    <form method="post">
+        <input type="text" class="form-control my-3" placeholder="Postcode" name="postcode" id="postcode">
+    </form>
+    {%for stop_point in stop_points%}
+    {% set outer_loop_index = loop.index %}
+    <h1>
+        {{stop_point["name"]}}
+    </h1>
+    <h3>
+        {{stop_point["indicator"]}}
+    </h3>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+              <th scope="col">Number</th>
+              <th scope="col">Destination</th>
+              <th scope="col">Time to Station</th>
+            </tr>
+        </thead>
+        <tbody>
+            {%for arrival in stop_point["arrivals"]%}
+            <tr>
+                <td>{{arrival["number"]}}</td>
+                <td>{{arrival["destination"]}}</td>
+                <td id="stop{{ outer_loop_index }}arrival{{ loop.index }}">{{arrival["time_to_station"][0]}}m {{arrival["time_to_station"][1]}}s</td>
+            </tr>
+            <script>
+                let stop{{ outer_loop_index }}arrival{{ loop.index }} = {{arrival["time_to_station"]}}
+
+                console.log(stop{{ outer_loop_index }}arrival{{ loop.index }})
+
+                setInterval(() => {
+                    if (stop{{ outer_loop_index }}arrival{{ loop.index }}[1] > 0){
+                        stop{{ outer_loop_index }}arrival{{ loop.index }}[1] = stop{{ outer_loop_index }}arrival{{ loop.index }}[1] - 1
+                    }
+                    else{
+                        stop{{ outer_loop_index }}arrival{{ loop.index }}[1] = 59
+                        stop{{ outer_loop_index }}arrival{{ loop.index }}[0] = stop{{ outer_loop_index }}arrival{{ loop.index }}[0] - 1
+                    }
+
+                    document.getElementById("stop{{ outer_loop_index }}arrival{{ loop.index }}").innerHTML = `${stop{{ outer_loop_index }}arrival{{ loop.index }}[0]}m ${stop{{ outer_loop_index }}arrival{{ loop.index }}[1]}s`
+                }, 1000)
+            </script>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endfor %}
+{% endblock %}
