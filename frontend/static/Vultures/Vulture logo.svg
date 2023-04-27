@@ -1,0 +1,43 @@
+<svg width="331" height="320" viewBox="0 0 331 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="331" height="320" fill="#F5F5F5"/>
+<ellipse cx="112" cy="121" rx="48" ry="78" fill="#838383"/>
+<path d="M148.124 140.578C160.093 122.515 188.254 132.212 186.565 153.814L175.135 300.032C174.064 313.727 160.35 322.723 147.362 318.251L77.7796 294.292C64.7912 289.82 59.5232 274.287 67.111 262.836L148.124 140.578Z" fill="#838383"/>
+<ellipse cx="150.5" cy="99" rx="38.5" ry="36" fill="#838383"/>
+<ellipse cx="150.5" cy="195" rx="38.5" ry="26" fill="#838383"/>
+<rect x="112" y="99" width="77" height="94" fill="#838383"/>
+<ellipse cx="214.364" cy="108.524" rx="12" ry="10.1958" transform="rotate(12.5 214.364 108.524)" fill="#EDC2C2"/>
+<ellipse cx="203" cy="38" rx="32" ry="27" fill="#EDC2C2"/>
+<rect x="198" y="62.8242" width="17" height="51" transform="rotate(-13 198 62.8242)" fill="#EDC2C2"/>
+<rect x="214" y="25" width="46" height="34" fill="#F4CB62"/>
+<ellipse cx="260.5" cy="42" rx="17.5" ry="17" fill="#F4CB62"/>
+<path d="M270.38 74.6628L253.475 47.9427L277.666 43.8945L270.38 74.6628Z" fill="#F4CB62"/>
+<ellipse cx="163.5" cy="99.5" rx="27.5" ry="28.5" fill="#F2F8F9"/>
+<rect x="167.329" y="88" width="52.0301" height="20" transform="rotate(12.5 167.329 88)" fill="#EDC2C2"/>
+<ellipse cx="166.5" cy="98.5" rx="11.5" ry="10.5" fill="#EDC2C2"/>
+<rect y="213" width="331" height="12" fill="#5C3B0A"/>
+<ellipse cx="188.75" cy="208.098" rx="4.5" ry="9" transform="rotate(-60 188.75 208.098)" fill="#F4CB62"/>
+<ellipse cx="192.865" cy="216.695" rx="4.5" ry="9" transform="rotate(-165 192.865 216.695)" fill="#F4CB62"/>
+<path d="M189.255 229.755L187.85 221.614L194.542 223.407L189.255 229.755Z" fill="#F4CB62"/>
+<ellipse cx="140.75" cy="213.098" rx="4.5" ry="9" transform="rotate(-60 140.75 213.098)" fill="#F4CB62"/>
+<ellipse cx="144.865" cy="221.695" rx="4.5" ry="9" transform="rotate(-165 144.865 221.695)" fill="#F4CB62"/>
+<path d="M141.255 234.755L139.85 226.614L146.542 228.407L141.255 234.755Z" fill="#F4CB62"/>
+<ellipse cx="183.01" cy="210.035" rx="4.5" ry="9" transform="rotate(-48.5 183.01 210.035)" fill="#F4CB62"/>
+<ellipse cx="185.329" cy="219.28" rx="4.5" ry="9" transform="rotate(-153.5 185.329 219.28)" fill="#F4CB62"/>
+<path d="M179.187 231.358L179.434 223.101L185.634 226.192L179.187 231.358Z" fill="#F4CB62"/>
+<ellipse cx="135.01" cy="215.035" rx="4.5" ry="9" transform="rotate(-48.5 135.01 215.035)" fill="#F4CB62"/>
+<ellipse cx="137.329" cy="224.28" rx="4.5" ry="9" transform="rotate(-153.5 137.329 224.28)" fill="#F4CB62"/>
+<path d="M131.187 236.358L131.434 228.101L137.634 231.192L131.187 236.358Z" fill="#F4CB62"/>
+<ellipse cx="176.081" cy="211.381" rx="4.5" ry="9" transform="rotate(-48.5 176.081 211.381)" fill="#F4CB62"/>
+<ellipse cx="178.401" cy="220.626" rx="4.5" ry="9" transform="rotate(-153.5 178.401 220.626)" fill="#F4CB62"/>
+<path d="M172.259 232.704L172.505 224.446L178.705 227.537L172.259 232.704Z" fill="#F4CB62"/>
+<ellipse cx="128.081" cy="216.381" rx="4.5" ry="9" transform="rotate(-48.5 128.081 216.381)" fill="#F4CB62"/>
+<ellipse cx="130.401" cy="225.626" rx="4.5" ry="9" transform="rotate(-153.5 130.401 225.626)" fill="#F4CB62"/>
+<path d="M124.259 237.704L124.505 229.446L130.705 232.537L124.259 237.704Z" fill="#F4CB62"/>
+<ellipse cx="212.5" cy="42" rx="9.5" ry="17" fill="#F4CB62"/>
+<ellipse cx="203" cy="11" rx="7" ry="11" fill="white"/>
+<ellipse cx="219" cy="11" rx="7" ry="11" fill="white"/>
+<path d="M196 11C196 8.21954 196.67 5.54223 197.875 3.50669C199.081 1.47115 200.732 0.228405 202.497 0.0284741C204.261 -0.171457 206.009 0.686258 207.388 2.42907C208.766 4.17188 209.674 6.67046 209.928 9.42217L203 11L196 11Z" fill="#EDC2C2"/>
+<path d="M212 11C212 8.21954 212.67 5.54223 213.875 3.50669C215.081 1.47115 216.732 0.228405 218.497 0.0284741C220.261 -0.171457 222.009 0.686258 223.388 2.42907C224.766 4.17188 225.674 6.67046 225.928 9.42217L219 11L212 11Z" fill="#EDC2C2"/>
+<ellipse cx="204" cy="15.5" rx="3" ry="2.5" fill="black"/>
+<ellipse cx="220" cy="15.5" rx="3" ry="2.5" fill="black"/>
+</svg>
