@@ -51,6 +51,8 @@ def lat_long_to_stop_points(lat, long):
     
     stop_points = [{"id": d['naptanId'], "name": d['commonName'], "indicator": d['indicator'], "arrivals": []} for d in response_data]
     
+    stop_points.append({"id": "syke", "name": "TEST STOP", "indicator": "uhhh", "arrivals": []})
+    
     return stop_points
 
 def update_arrivals(stop_point):
