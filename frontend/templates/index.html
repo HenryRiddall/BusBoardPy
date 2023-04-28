@@ -1,69 +1,100 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div>
-        <h1>{% block title %} Welcome to BusBoard {% endblock %}</h1>
+    <div class="mb-3 is-flex is-justify-content-space-between is-flex-direction-row is-align-items-flex-end">
+        <h1 class="title is-1 m-0">{% block title %} Welcome to BusBoard {% endblock %}</h1>
         <form name="postcodeForm" method="post">
-            <input type="text" placeholder="Postcode" name="postcode" id="postcode" value="{{postcode}}">
-            <input type="submit" value="Search">
+            <div class="field has-addons">
+                <div class="control">
+                    <input type="text" class="input" placeholder="Postcode" name="postcode" id="postcode" value="{{postcode}}">
+                </div>
+                <div class="control">
+                  <input class="button is-info" type="submit" value="Search">
+                </div>
+            </div>
         </form>
     </div>
-    {%for stop_point in stop_points%}
-    <div>
-        {% set outer_loop_index = loop.index %}
-        <div>
-            <h1>
-                {{stop_point["name"]}}
-            </h1>
-            <h3>
-                <span>
-                    {{stop_point["indicator"]}}
-                </span>
-            </h3>
-        </div>
-        <div>
-            <table>
-                <thead>
-                    <tr>
-                    <th scope="col">Number</th>
-                    <th scope="col">Destination</th>
-                    <th scope="col">Time to Station</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {%for arrival in stop_point["arrivals"]%}
-                    <tr>
-                        <td>{{arrival["number"]}}</td>
-                        <td>{{arrival["destination"]}}</td>
-                        <td id="stop{{ outer_loop_index }}arrival{{ loop.index }}">{{arrival["time_to_station"][0]}}m {{arrival["time_to_station"][1]}}s</td>
-                    </tr>
-                    <script>
-                        let stop{{ outer_loop_index }}arrival{{ loop.index }} = {{arrival["time_to_station"]}}
 
-                        console.log(stop{{ outer_loop_index }}arrival{{ loop.index }})
-
-                        setInterval(() => {
-                            document.postcodeForm.submit()
-                    }, 30000)
-
-                    setInterval(() => {
-                        if (stop{{ outer_loop_index }}arrival{{ loop.index }}[1] > 0){
-                            stop{{ outer_loop_index }}arrival{{ loop.index }}[1] = stop{{ outer_loop_index }}arrival{{ loop.index }}[1] - 1
-                        }
-                        else{
-                            stop{{ outer_loop_index }}arrival{{ loop.index }}[1] = 59
-                            stop{{ outer_loop_index }}arrival{{ loop.index }}[0] = stop{{ outer_loop_index }}arrival{{ loop.index }}[0] - 1
-                        }
-
-                        document.getElementById("stop{{ outer_loop_index }}arrival{{ loop.index }}").innerHTML = `${stop{{ outer_loop_index }}arrival{{ loop.index }}[0]}m ${stop{{ outer_loop_index }}arrival{{ loop.index }}[1]}s`
-                    }, 1000)
-                    </script>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
+    {% if postcode == "" %}
+    <div class="box has-text-info has-text-centered">
+        Please enter a postcode
     </div>
+
+    {% elif stop_points is defined and stop_points|length == 0 %}
+     <div class="box has-text-danger has-text-centered">
+        Unable to find any stop points, please check your postcode
+     </div>
+    {% endif %}
+
+    {%for stop_point in stop_points%}
+        {{ build_stop_point(stop_point, loop.index) }}
     {% endfor %}
 {% endblock %}
 
 
+{% macro build_stop_point(stop_point, stop_index) %}
+<div class="box">
+    <div class="block">
+        <h1 class="title is-2  mb-0">
+            {{stop_point["name"]}}
+        </h1>
+        <h3>
+            <span class="tag is-primary">
+                {{stop_point["indicator"]}}
+            </span>
+        </h3>
+    </div>
+    <table class="table is-hoverable is-fullwidth">
+        <thead class="">
+            <tr class="is-selected">
+                <th scope="col" style="width: 100px">Number</th>
+                <th scope="col">Destination</th>
+                <th scope="col" style="width: 150px">Time to Station</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% if stop_point["arrivals"] is defined and stop_point["arrivals"]|length == 0 %}
+            <tr>
+                <td colspan="3" class="has-text-centered has-text-danger">
+                    No buses arriving
+                </td>
+            </tr>
+            <tr/>
+            {% endif %}
+
+            {%for arrival in stop_point["arrivals"]%}
+                {% set current_cell_id = "stop"+stop_index | string +"arrival" + loop.index | string %}
+                {{ build_arrival(arrival, current_cell_id) }}
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endmacro %}
+
+{% macro build_arrival(arrival, current_cell_id) %}
+<tr>
+    <td>{{arrival["number"]}}</td>
+    <td>{{arrival["destination"]}}</td>
+    <td id="{{ current_cell_id }}">{{arrival["time_to_station"][0]}}m {{arrival["time_to_station"][1]}}s</td>
+</tr>
+
+<script>
+    let {{ current_cell_id }} = {{arrival["time_to_station"]}}
+
+    setInterval(() => {
+        document.postcodeForm.submit()
+    }, 30000)
+
+    setInterval(() => {
+        if ({{ current_cell_id }}[1] > 0){
+            {{ current_cell_id }}[1] = {{ current_cell_id }}[1] - 1
+        }
+        else{
+            {{ current_cell_id }}[1] = 59
+            {{ current_cell_id }}[0] = {{ current_cell_id }}[0] - 1
+        }
+        document.getElementById("{{ current_cell_id }}").innerHTML = {{current_cell_id}}[0]+ "m " + {{current_cell_id}}[1] + "s"
+    }, 1000)
+</script>
+{% endmacro %}
